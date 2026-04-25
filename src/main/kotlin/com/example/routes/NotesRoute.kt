@@ -20,7 +20,7 @@ fun Route.notesRoutes() {
             val notes = transaction {
                 Notes.selectAll().orderBy(Notes.createdAt, SortOrder.DESC).map { row ->
                     NoteResponse(
-                        id = row[Notes.id],
+                        id = row[Notes.id].value,
                         title = row[Notes.title],
                         content = row[Notes.content],
                         createdAt = row[Notes.createdAt].toString()
@@ -38,7 +38,7 @@ fun Route.notesRoutes() {
             val note = transaction {
                 Notes.selectAll().where { Notes.id eq id }.singleOrNull()?.let { row ->
                     NoteResponse(
-                        id = row[Notes.id],
+                        id = row[Notes.id].value,
                         title = row[Notes.title],
                         content = row[Notes.content],
                         createdAt = row[Notes.createdAt].toString()
@@ -58,7 +58,7 @@ fun Route.notesRoutes() {
                 }.value
                 Notes.selectAll().where { Notes.id eq newId }.single().let { row ->
                     NoteResponse(
-                        id = row[Notes.id],
+                        id = row[Notes.id].value,
                         title = row[Notes.title],
                         content = row[Notes.content],
                         createdAt = row[Notes.createdAt].toString()
@@ -82,7 +82,7 @@ fun Route.notesRoutes() {
                 if (count == 0) return@transaction null
                 Notes.selectAll().where { Notes.id eq id }.single().let { row ->
                     NoteResponse(
-                        id = row[Notes.id],
+                        id = row[Notes.id].value,
                         title = row[Notes.title],
                         content = row[Notes.content],
                         createdAt = row[Notes.createdAt].toString()
