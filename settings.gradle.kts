@@ -1,4 +1,4 @@
-rootProject.name = "Back Server"
+rootProject.name = "back-server"
 
 pluginManagement {
     repositories {

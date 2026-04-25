@@ -1,10 +1,10 @@
-FROM gradle:8.5-jdk17 AS build
+FROM gradle:8.7-jdk17 AS build
 WORKDIR /app
 COPY . .
-RUN gradle shadowJar --no-daemon
+RUN gradle installDist --no-daemon
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-COPY --from=build /app/build/libs/*-all.jar app.jar
+COPY --from=build /app/build/install/back-server/ .
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["bin/back-server"]
