@@ -14,8 +14,15 @@ import io.micrometer.core.instrument.binder.jvm.JvmMemoryMetrics
 import io.micrometer.core.instrument.binder.system.ProcessorMetrics
 import io.micrometer.prometheus.PrometheusConfig
 import io.micrometer.prometheus.PrometheusMeterRegistry
+import io.ktor.server.plugins.calllogging.*
+import io.ktor.server.request.*
 
 fun Application.configureRouting() {
+    install(CallLogging) {
+        level = org.slf4j.event.Level.INFO
+        filter { call -> call.request.path().startsWith("/") }
+    }
+
     // Создаём Prometheus registry
     val appMicrometerRegistry = PrometheusMeterRegistry(PrometheusConfig.DEFAULT)
 

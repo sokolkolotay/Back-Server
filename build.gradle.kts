@@ -41,4 +41,5 @@ dependencies {
     // Metrics
     implementation("io.ktor:ktor-server-metrics-micrometer-jvm:$ktor_version")
     implementation("io.micrometer:micrometer-registry-prometheus:1.12.4")
+    implementation("io.ktor:ktor-server-call-logging-jvm:${ktor_version}")
 }
