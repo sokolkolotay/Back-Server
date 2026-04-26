@@ -7,13 +7,12 @@ import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 
 fun Application.configureDatabase() {
-    val url = environment.config.property("database.url").getString()
-    val user = environment.config.property("database.user").getString()
-    val password = environment.config.property("database.password").getString()
+    val url = System.getenv("DATABASE_URL") ?: "jdbc:postgresql://localhost:5432/notes"
+    val user = System.getenv("DATABASE_USER") ?: "postgres"
+    val password = System.getenv("DATABASE_PASSWORD") ?: "password"
 
     Database.connect(url = url, driver = "org.postgresql.Driver", user = user, password = password)
 
-    // Создаём таблицу при старте, если её нет
     transaction {
         SchemaUtils.create(Notes)
     }
