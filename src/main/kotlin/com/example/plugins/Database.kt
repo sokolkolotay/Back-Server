@@ -1,6 +1,7 @@
 package com.example.plugins
 
 import com.example.models.Notes
+import com.example.models.Tasks
 import io.ktor.server.application.*
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
