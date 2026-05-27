@@ -1,5 +1,6 @@
 package com.example.plugins
 
+import com.example.routes.tasksRoutes
 import com.example.routes.healthRoutes
 import com.example.routes.notesRoutes
 import io.ktor.http.*
@@ -53,5 +54,6 @@ fun Application.configureRouting() {
 
         healthRoutes()
         notesRoutes()
+        tasksRoutes()
     }
 }
