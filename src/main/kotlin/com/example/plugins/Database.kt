@@ -15,6 +15,7 @@ fun Application.configureDatabase() {
 
     transaction {
         SchemaUtils.create(Notes)
+        SchemaUtils.create(Tasks)
     }
 
     log.info("Database connected: $url")

@@ -27,3 +27,22 @@ data class NoteResponse(
     val content: String,
     val createdAt: String
 )
+
+// Таблица задач
+object Tasks : IntIdTable("tasks") {
+    val title = varchar("title", 255)
+    val content = text("content")
+    val chatId = long("chat_id")
+    val done = bool("done").default(false)
+    val createdAt = datetime("created_at").clientDefault { LocalDateTime.now() }
+}
+
+@Serializable
+data class TaskResponse(
+    val id: Int,
+    val title: String,
+    val content: String,
+    val chatId: Long,
+    val done: Boolean,
+    val createdAt: String
+)
