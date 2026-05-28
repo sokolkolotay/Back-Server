@@ -42,4 +42,7 @@ dependencies {
     implementation("io.ktor:ktor-server-metrics-micrometer-jvm:$ktor_version")
     implementation("io.micrometer:micrometer-registry-prometheus:1.12.4")
     implementation("io.ktor:ktor-server-call-logging-jvm:${ktor_version}")
+
+    implementation("org.apache.kafka:kafka-clients:3.7.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 }
